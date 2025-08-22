@@ -1,9 +1,9 @@
-import {useState} from "react";
-import Customers from "../data/Customers.jsx";
-
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import * as customerService from "../data/Customers.js"
 function ListCustomer(){
 
-    const [customers, setCustomers] = useState(Customers);
+    const [customers, setCustomers] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedCustomer, setSelectedCustomer] = useState(null);
     const deleteCutomer = (cus) => {
@@ -21,6 +21,12 @@ function ListCustomer(){
         setSelectedCustomer(null);
         setShowModal(false);
     }
+    const [search,setSearch]=useState("")
+    const navigate=useNavigate();
+    useEffect(() => {
+        const temp=customerService.getAllCustomers();
+        setCustomers(temp);
+    }, [search]);
 
 
     return (
@@ -28,8 +34,10 @@ function ListCustomer(){
             <div className="bg-white p-8 overflow-auto mt-16 h-screen">
                 <h2 className="text-2xl mb-4"> Danh sách khách hàng</h2>
                 <button
-                    className="bg-red-500 text-white px-3 py-1 rounded-md text-xs md:text-sm"
-                    onClick={addCustomer}> Thêm
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+                    onClick={() => navigate("/add")}
+                >
+                    ➕ Thêm mới
                 </button>
                 <div className="relative overflow-auto">
                     <div className="overflow-x-auto rounded-lg">

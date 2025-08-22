@@ -5,4 +5,9 @@ const Customers = [
     {id: 4, name: "Chiến", phone: "0123456789", email: "chien@gmail.com", rank: "Bạc"},
     {id: 5, name: "Hà", phone: "0123456789", email: "ha@gmail.com", rank: "Vàng"},
 ];
-export default Customers;
+export const getAllCustomers = () => {
+  return Customers;
+}
+export const addCustomer=(customer)=>{
+    Customers.push(customer);
+}
