@@ -1,15 +1,15 @@
 import {useState} from "react";
 import * as Yup from "yup";
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import * as customerService from "../data/Customers.js"
+import * as customerService from "../service/Customers.js"
 import {useNavigate} from "react-router-dom";
 
 function AddCustomer() {
     const [customer, setCustomer] = useState({
-        id: "",
         name: "",
         phone: "",
         email: "",
+        date:"",
         rank: ""
     })
     const navigate = useNavigate();
@@ -28,6 +28,9 @@ function AddCustomer() {
         rank: Yup.string()
             .required("không được để trống")
             .matches(/^[A-Za-zÀ-ỹ0-9\s.,&()-]{2,}$/, "Tên công ty không hợp lệ,vd: ABC"),
+        date:Yup.date().required("không được để trống")
+            .min(new Date(2000, 1, 1), "Ngày sinh phải sau năm 2000"),
+
     }
     return (
         <>
@@ -91,6 +94,21 @@ function AddCustomer() {
                             />
                             <ErrorMessage
                                 name={"email"}
+                                component={"div"}
+                                className="text-red-500 text-sm"/>
+                        </div>
+                        <div className="flex items-start flex-col justify-start">
+                            <label htmlFor="date" className="text-sm text-gray-700 dark:text-gray-200 mr-2">
+                               Ngày:
+                            </label>
+                            <Field
+                                type="date"
+                                id="date"
+                                name="date"
+                                className="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            />
+                            <ErrorMessage
+                                name={"date"}
                                 component={"div"}
                                 className="text-red-500 text-sm"/>
                         </div>

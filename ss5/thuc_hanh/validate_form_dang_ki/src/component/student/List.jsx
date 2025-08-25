@@ -8,8 +8,11 @@ const StudentList = () => {
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        const temp = studentService.getAllStudents();
-        setStudents(temp);
+        const getAllStudent=async ()=>{
+            const temp = await  studentService.getAllStudents();
+            setStudents(temp);
+        }
+        getAllStudent();
     }, [search]);
     return (
         <div>

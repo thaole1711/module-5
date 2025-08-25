@@ -6,7 +6,6 @@ import * as Yup from "yup"
 
 const StudentCreate = () => {
     const [student, setStudent] = useState({
-        id: "",
         name: "",
         dob: "",
         point: 0,
@@ -18,7 +17,7 @@ const StudentCreate = () => {
         navigate("/")
     }
     const validationStudent = {
-        id: Yup.number().required("id không được để trống"),
+
         name: Yup.string().required("tên không được để trống")
             .matches(/^[A-Za-z ]{3,}$/, "Tên phải đúng định dạng.  ...."),
 
@@ -38,18 +37,6 @@ const StudentCreate = () => {
                 >
                     <Form className="w-full flex flex-col gap-4">
 
-                        <div className="flex items-start flex-col justify-start">
-                            <label htmlFor="id" className="text-sm text-gray-700 dark:text-gray-200 mr-2">Mã học
-                                sinh</label>
-                            <Field type="text" id="id"
-                                  name="id"
-                                  className="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500"/>
-                            <ErrorMessage
-                                name={"id"}
-                                component={"div"}
-                                className="text-red-500 text-sm"
-                            />
-                        </div>
                         <div className="flex items-start flex-col justify-start">
                             <label htmlFor="name" className="text-sm text-gray-700 dark:text-gray-200 mr-2">Họ và
                                 tên</label>

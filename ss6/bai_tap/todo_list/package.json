@@ -1,5 +1,5 @@
 {
-  "name": "validate_form_dang_ki",
+  "name": "todo_list",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,6 +15,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.8.1",
+    "sonner": "^2.0.7",
     "yup": "^1.7.0"
   },
   "devDependencies": {

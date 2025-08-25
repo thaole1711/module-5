@@ -1,0 +1,60 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "name": "Trí Đông",
+      "phone": "0123456789",
+      "email": "dong@gmail.com",
+      "date": "2025-01-03",
+      "rank": "Vàng"
+    },
+    {
+      "id": "2",
+      "name": "Vương",
+      "phone": "01234565789",
+      "email": "vuong@gmail.com",
+      "date": "2025-01-03",
+      "rank": "Bạc"
+    },
+    {
+      "id": "3",
+      "name": "Thảo",
+      "phone": "0123456789",
+      "email": "thao@gmail.com",
+      "date": "2025-01-03",
+      "rank": "Vàng"
+    },
+    {
+      "id": "4",
+      "name": "Chiến",
+      "phone": "0123456789",
+      "email": "chien@gmail.com",
+      "date": "2025-01-03",
+      "rank": "Bạc"
+    },
+    {
+      "id": "5",
+      "name": "Hà",
+      "phone": "0123456789",
+      "email": "ha@gmail.com",
+      "date": "2025-01-03",
+      "rank": "Vàng"
+    },
+    {
+      "id": "b4a6",
+      "name": "Lê Thu Thảo",
+      "phone": "0972117149",
+      "email": "le17112401@gmail.com",
+      "date": "2025-08-13",
+      "rank": "khas"
+    },
+    {
+      "id": "0c63",
+      "name": "Lê Thu Thảo",
+      "phone": "0972117149",
+      "email": "le17112401@gmail.com",
+      "date": "2025-08-12",
+      "rank": "khas"
+    }
+  ]
+}

@@ -1,41 +1,24 @@
-const Students=[
-    {
-        id: 1,
-        name: "Nguyễn Văn An",
-        dob: "2003-05-14",
-        point: 8.5,
-        address: "Hà Nội",
-    },
-    {
-        id: 2,
-        name: "Trần Thị Bình",
-        dob: "2004-11-22",
-        point: 9.0,
-        address: "Đà Nẵng",
-    },
-    {
-        id: 3,
-        name: "Lê Minh Tuấn",
-        dob: "2002-03-09",
-        point: 7.2,
-        address: "TP. Hồ Chí Minh",
-    },
-    {
-        id: 4,
-        name: "Phạm Thị Hạnh",
-        dob: "2003-07-30",
-        point: 8.8,
-        address: "Hải Phòng",
-    },
-    {
-        id: 5,
-        name: "Đỗ Quang Khải",
-        dob: "2005-01-18",
-        point: 6.9,
-        address: "Cần Thơ",
-    },
-];
-export const getAllStudents=()=>{return Students};
-export const addStudent=(student)=>{
-    Students.push(student);
-}
+import axios from "axios";
+
+const API_URL = "http://localhost:3000/students"
+export const getAllStudents = async () => {
+
+        try {
+            const result = await axios.get(API_URL);
+            return result.data;
+        } catch (error) {
+            return [];
+        }
+    };
+    export const addStudent = async (student) => {
+     try{
+         const result= await axios.post(API_URL,student);
+         if(result.status===201){
+             return true;
+         }else {
+             return false;
+         }
+     }catch (error){
+         return false;
+     }
+    }
