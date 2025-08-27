@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Bret",
+      "email": "Sincere@april.biz",
+      "website": "hildegard.org"
+    },
+    {
+      "id": 2,
+      "name": "Antonette",
+      "email": "Shanna@melissa.tv",
+      "website": "anastasia.net"
+    },
+    {
+      "id": 3,
+      "name": "Samantha",
+      "email": "Nathan@yesenia.net",
+      "website": "ramiro.info"
+    },
+    {
+      "id": 4,
+      "name": "Karianne",
+      "email": "Julianne.OConner@kory.org",
+      "website": "kale.biz"
+    },
+    {
+      "id": 5,
+      "name": "Kamren",
+      "email": "Lucio_Hettinger@annie.ca",
+      "website": "demarco.info"
+    },
+    {
+      "id": 6,
+      "name": "Leopoldo_Corkery",
+      "email": "Karley_Dach@jasper.info",
+      "website": "ola.org"
+    },
+    {
+      "id": 7,
+      "name": "Elwyn.Skiles",
+      "email": "Telly.Hoeger@billy.biz",
+      "website": "elvis.io"
+    },
+    {
+      "id": 8,
+      "name": "Maxime_Nienow",
+      "email": "Sherwood@rosamond.me",
+      "website": "jacynth.com"
+    },
+    {
+      "id": 9,
+      "name": "Delphine",
+      "email": "Chaim_McDermott@dana.io",
+      "website": "conrad.com"
+    },
+    {
+      "id": 10,
+      "name": "Moriah.Stanton",
+      "email": "Rey.Padberg@karina.biz",
+      "website": "ambrose.net"
+    }
+  ]
+}

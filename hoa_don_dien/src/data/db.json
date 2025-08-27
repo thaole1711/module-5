@@ -1,0 +1,69 @@
+{
+  "hoaDon": [
+    {
+      "ma": "MS-0004",
+      "soLuong": 12.2,
+      "donGia": 12,
+      "thang": "2025-06",
+      "khachHang": {
+        "id": 1,
+        "ten": "Nguyễn Văn A",
+        "diaChi": "Đà Nẵng"
+      },
+      "id": 4
+    },
+    {
+      "id": 5,
+      "ma": "MHD-0006",
+      "soLuong": 12.2,
+      "donGia": 12,
+      "thang": "2025-03",
+      "khachHang": {
+        "id": 3,
+        "ten": "Nguyễn Văn C",
+        "diaChi": "Đà Nẵng"
+      }
+    },
+    {
+      "ma": "MS-0009",
+      "soLuong": 1.2,
+      "donGia": 12,
+      "thang": "2025-08-20",
+      "khachHang": {
+        "id": 1,
+        "ten": "Nguyễn Văn A",
+        "diaChi": "Đà Nẵng"
+      },
+      "id": 6
+    },
+    {
+      "ma": "MS-0010",
+      "soLuong": 3,
+      "donGia": 1,
+      "thang": "2025-06",
+      "khachHang": {
+        "id": 1,
+        "ten": "Nguyễn Văn A",
+        "diaChi": "Đà Nẵng"
+      },
+      "id": 7
+    }
+  ],
+  "khachHang": [
+    {
+      "id": 1,
+      "ten": "Nguyễn Văn A",
+      "diaChi": "Đà Nẵng"
+    },
+    {
+      "id": 2,
+      "ten": "Nguyễn Văn B",
+      "diaChi": "Đà Nẵng"
+    },
+    {
+      "id": 3,
+      "ten": "Nguyễn Văn C",
+      "diaChi": "Đà Nẵng"
+    }
+  ]
+}

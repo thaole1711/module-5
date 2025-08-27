@@ -1,11 +1,28 @@
 import axios from "axios";
 
+
 const API_URL = "http://localhost:3000/books"
 
-export const getAllBooksByTitle = async (title) => {
+export const getAllBooksByCode= async (code) => {
     try {
-        const result = await axios.get(API_URL + `?title_like=${title}`);
-        return result.data.filter(b => b.title.toLowerCase().includes(title.toLowerCase()));
+        const result = await axios.get(API_URL + `?code_like=${code}&_sort=quantity&_order=desc`);
+        return result.data;
+    } catch (error) {
+        return [];
+    }
+};
+export const getAllBooksByCategory= async (categoryId) => {
+    try {
+        const result = await axios.get(API_URL + `?categoryId=${categoryId}&_sort=quantity&_order=desc`);
+        return result.data.filter(book => book.category.id === Number(categoryId));
+    } catch (error) {
+        return [];
+    }
+};
+export const getAllBooksByTitle= async (title) => {
+    try {
+        const result = await axios.get(API_URL + `?title_like=${title}&_sort=quantity&_order=desc`);
+        return result.data;
     } catch (error) {
         return [];
     }
@@ -54,3 +71,41 @@ export const updateBook = async (id, book) => {
         return null;
     }
 }
+export const getBookByDate=async (startDate,endDate)=>{
+    try{
+        const result=await axios.get(API_URL+`?date_gte=${startDate}&date_lte=${endDate}`);
+        return result.data;
+    }catch (error){
+        return [];
+    }
+}
+
+
+// 🔥 Phân trang và sắp xếp
+export const getBooksByPageSortedByQuantity = async (page = 1, limit = 5) => {
+    try {
+        const result = await axios.get(API_URL+`?_page=${page}&_limit=${limit}&_sort=quantity&_order=desc`);
+        const total = parseInt(result.headers['x-total-count'], 10);
+        return { data: result.data, total };
+    } catch (error) {
+        return { data: [], total: 0 };
+    }
+};
+
+// Sắp xếp
+export const getBooksSortedByPriceDesc = async () => {
+    try {
+        const result = await axios.get(API_URL + "?_sort=price&_order=desc");
+        return result.data;
+    } catch (error) {
+        return [];
+    }
+};
+export const getTop5BooksByQuantity = async () => {
+    try {
+        const result = await axios.get(API_URL + `?_sort=quantity&_order=desc&_limit=3`);
+        return result.data;
+    } catch (error) {
+        return [];
+    }
+};
