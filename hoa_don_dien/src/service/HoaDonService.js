@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3001/hoaDon"
+const API_URL = "http://localhost:3000/hoaDon"
 export const getAllHoaDon = async (code) => {
     try {
         const result = await axios.get(API_URL);
@@ -14,11 +14,11 @@ export const getAllHoaDon = async (code) => {
 export const getTop3TongTien = async (code) => {
     try {
         const result = await axios.get(API_URL);
-        const hoaDonTotal=result.data.map(hd=>({
-            ...hd,tongTien:hd.soLuong*hd.donGia
+        const hoaDonTotal = result.data.map(hd => ({
+            ...hd, tongTien: hd.soLuong * hd.donGia
         }));
-        const sort=hoaDonTotal.sort((a,b)=>b.tongTien-a.tongTien);
-        return sort.slice(0,3);
+        const sort = hoaDonTotal.sort((a, b) => b.tongTien - a.tongTien);
+        return sort.slice(0, 3);
     } catch (error) {
         return [];
     }
@@ -89,3 +89,28 @@ export const updateHoaDon = async (id, book) => {
         return null;
     }
 }
+export const searchBooksByFile = async (ten, search) => {
+    try {
+
+        let query = "";
+
+        if (ten) query += `&ten_like=${ten}`;
+        if (search) query += `&ma_like=${search}`;
+
+        // luôn sort theo quantity desc
+        // query += `&_sort=quantity&_order=desc`;
+
+        // loại bỏ ký tự & đầu tiên, thay thành ?
+        if (query.startsWith("&")) {
+            query = "?" + query.slice(1);
+        }
+
+        const result = await axios.get(API_URL + query);
+        return result.data;
+
+    } catch (error) {
+        return [];
+    }
+
+};
+

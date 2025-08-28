@@ -1,0 +1,125 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "code": "PROD-0001",
+      "title": "Blackmores",
+      "description": "Blackmores ",
+      "price": 60000,
+      "quantity": 300,
+      "date": "2022-01-24",
+      "categoryId": 1,
+      "category": {
+        "id": 1,
+        "name": "thực phẩm chức năng",
+        "description": "thực phẩm chức năng"
+      }
+    },
+    {
+      "id": 2,
+      "code": "PROD-0002",
+      "title": "CoQ10",
+      "description": "CoQ10 ",
+      "price": 30000,
+      "quantity": 200,
+      "date": "2022-01-24",
+      "categoryId": 1,
+      "category": {
+        "id": 1,
+        "name": "thực phẩm chức năng",
+        "description": "thực phẩm chức năng"
+      }
+    },
+    {
+      "id": 3,
+      "code": "PROD-0003",
+      "title": "Máy đo huyết áp",
+      "description": "Máy đo huyết áp",
+      "price": 100000,
+      "quantity": 140,
+      "date": "2022-05-24",
+      "categoryId": 2,
+      "category": {
+        "id": 2,
+        "name": "thiết bị y tế",
+        "description": "thiết bị y tế"
+      }
+    },
+    {
+      "id": 4,
+      "code": "PROD-0004",
+      "title": "Efferlgan",
+      "description": "Efferlgan ",
+      "price": 20000,
+      "quantity": 120,
+      "date": "2022-04-24",
+      "categoryId": 3,
+      "category": {
+        "id": 3,
+        "name": "dược phẩm",
+        "description": "dược phẩm"
+      }
+    },
+    {
+      "id": 5,
+      "code": "PROD-0005",
+      "title": "Nhiệt kế hồng",
+      "description": "Nhiệt kế hồng ",
+      "price": 25000,
+      "quantity": 190,
+      "date": "2022-03-24",
+      "categoryId": 2,
+      "category": {
+        "id": 2,
+        "name": "thiết bị y tế",
+        "description": "thiết bị y tế"
+      }
+    },
+    {
+      "code": "PROD-0012",
+      "title": "kẹo ",
+      "quantity": 2,
+      "date": "2025-08-14",
+      "price": 12,
+      "description": "kẹo kẹo",
+      "categoryId": 1,
+      "category": {
+        "id": 1,
+        "name": "thực phẩm chức năng",
+        "description": "thực phẩm chức năng"
+      },
+      "id": 6
+    },
+    {
+      "code": "PROD-0011",
+      "title": "parodon",
+      "quantity": 100,
+      "date": "2025-08-14",
+      "price": 12,
+      "description": "thuốc đâu đầu",
+      "category": {
+        "id": 1,
+        "name": "thực phẩm chức năng",
+        "description": "thực phẩm chức năng"
+      },
+      "id": 7
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "thực phẩm chức năng",
+      "description": "thực phẩm chức năng"
+    },
+    {
+      "id": 2,
+      "name": "thiết bị y tế",
+      "description": "thiết bị y tế"
+    },
+    {
+      "id": 3,
+      "name": "dược phẩm",
+      "description": "dược phẩm"
+    }
+  ]
+}

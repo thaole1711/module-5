@@ -22,6 +22,31 @@ function ListBook() {
     const totalPages = Math.ceil(total / limit);
     const [categogies, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("");
+    // gộp tìm kiếm chung
+    const [filters, setFilters] = useState({
+        code: "",
+        title: "",
+        categoryId: "",
+        startDate: "",
+        endDate: "",
+    });
+
+    // gọi API mỗi khi filters thay đổi
+    useEffect(() => {
+        const fetchBooks = async () => {
+            const result = await bookService.searchBooks(
+                filters.code,
+                filters.title,
+                filters.categoryId,
+                filters.startDate,
+                filters.endDate
+            );
+            setBooks(result);
+        };
+
+        fetchBooks();
+    }, [filters]);
+
 
     // có phân trang
     useEffect(() => {
@@ -32,7 +57,7 @@ function ListBook() {
             setTotal(total);
         };
         fetchBooks();
-    }, [page, limit]);
+    }, [page, limit, keyword]);
 // loại sách
     useEffect(() => {
         const getAllCategories = async () => {
@@ -41,15 +66,7 @@ function ListBook() {
         }
         getAllCategories();
     }, []);
-    useEffect(() => {
-        const getBookOfCategory = async () => {
-            if (selectedCategory) {
-                const temp = await bookService.getAllBooksByCategory(selectedCategory);
-                setBooks(temp);
-            }
-        }
-        getBookOfCategory();
-    }, [selectedCategory]);
+
 // hiển thị top 5
 
     const handleTop3 = async () => {
@@ -64,31 +81,31 @@ function ListBook() {
 
 
 // tìm kiếm sách theo tên và code(code có bấm nút)
-    useEffect(() => {
-        const getAllBook = async () => {
-            if (keyword) {
-                const temp = keyword.trim()
-                    ? await bookService.getAllBooksByCode(keyword.trim())
-                    : await bookService.getAllBooksByCode("");
-                setBooks(temp);
-            } else if (searchTitle) {
-                const temp1 = await bookService.getAllBooksByTitle(searchTitle);
-                setBooks(temp1);
-            }
-
-        }
-        getAllBook();
-    }, [keyword, searchTitle]);
+//     useEffect(() => {
+//         const getAllBook = async () => {
+//             if (keyword) {
+//                 const temp = keyword.trim()
+//                     ? await bookService.getAllBooksByCode(keyword.trim())
+//                     : await bookService.getAllBooksByCode("");
+//                 setBooks(temp);
+//             } else if (searchTitle) {
+//                 const temp1 = await bookService.getAllBooksByTitle(searchTitle);
+//                 setBooks(temp1);
+//             }
+//
+//         }
+//         getAllBook();
+//     }, [keyword, searchTitle]);
     // tìm kiếm theo ngày
-    useEffect(() => {
-        const getDateBook = async () => {
-            if (startDate && endDate) {
-                const temp = await bookService.getBookByDate(startDate, endDate);
-                setBooks(temp);
-            }
-        }
-        getDateBook();
-    }, [startDate, endDate]);
+    // useEffect(() => {
+    //     const getDateBook = async () => {
+    //         if (startDate && endDate) {
+    //             const temp = await bookService.getBookByDate(startDate, endDate);
+    //             setBooks(temp);
+    //         }
+    //     }
+    //     getDateBook();
+    // }, [startDate, endDate]);
 
 
     const cancelDelete = () => {
@@ -139,14 +156,14 @@ function ListBook() {
                 <div className="flex gap-2">
                     <input
                         type="date"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
+                        value={filters.startDate}
+                        onChange={(e) => setFilters({ ...filters, startDate: e.target.value })}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
                     <input
                         type="date"
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
+                        value={filters.endDate}
+                        onChange={(e) => setFilters({ ...filters, endDate: e.target.value })}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
                 </div>
@@ -155,8 +172,8 @@ function ListBook() {
                 <input
                     type="text"
                     placeholder="🔍 Tìm theo mã..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    value={filters.code}
+                    onChange={(e) => setFilters({ ...filters, code: e.target.value })}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
 
@@ -164,15 +181,15 @@ function ListBook() {
                 <input
                     type="text"
                     placeholder="🔍 Tìm theo tên..."
-                    value={searchTitle}
-                    onChange={(e) => setSearchTitle(e.target.value)}
+                    value={filters.title}
+                    onChange={(e) => setFilters({ ...filters, title: e.target.value })}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
 
                 {/* Chọn loại */}
                 <select
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    value={filters.categoryId}
+                    onChange={(e) => setFilters({ ...filters, categoryId: e.target.value })}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 >
                     <option value="">-- Tất cả loại --</option>
@@ -185,12 +202,13 @@ function ListBook() {
 
                 {/* Nút tìm */}
                 <button
-                    onClick={() => setKeyword(search.trim())}
+                    onClick={() => setFilters({ ...filters })} // thực ra không cần, vì filters thay đổi là useEffect gọi API rồi
                     className="px-5 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
                 >
                     Tìm
                 </button>
             </div>
+
 
             {/* --- Bảng sách + phân trang giữ nguyên --- */}
 

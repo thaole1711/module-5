@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:3001/khachHang"
+const API_URL = "http://localhost:3000/khachHang"
 export const getAllKhachHang= async (code) => {
     try {
         const result = await axios.get(API_URL);

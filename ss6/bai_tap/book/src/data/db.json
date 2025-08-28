@@ -7,58 +7,11 @@
       "quantity": 11,
       "date": "2025-08-03",
       "price": 15000,
-      "category": {
-        "id": 2,
-        "name": "tiểu thuyết"
-      }
-    },
-    {
-      "title": "doraemon",
-      "code": "MS-002",
-      "quantity": 12,
-      "id": 4,
-      "date": "2025-08-04",
-      "price": 17000,
+      "categoryId": 1,
       "category": {
         "id": 1,
         "name": "truyện"
       }
-    },
-    {
-      "code": "MS-003",
-      "title": "doraemon 1234",
-      "quantity": 20,
-      "id": 5,
-      "date": "2025-08-05",
-      "price": 11000,
-      "category": {
-        "id": 2,
-        "name": "tiểu thuyết"
-      }
-    },
-    {
-      "code": "MS-004",
-      "title": "Toán khó",
-      "quantity": 6,
-      "date": "2025-08-06",
-      "price": 16000,
-      "id": 6,
-      "category": {
-        "id": 1,
-        "name": "truyện"
-      }
-    },
-    {
-      "code": "MS-005",
-      "title": "hòa bình",
-      "quantity": 12,
-      "date": "2025-08-05",
-      "price": 90,
-      "category": {
-        "id": 2,
-        "name": "tiểu thuyết"
-      },
-      "id": 7
     },
     {
       "code": "MS-0019",
@@ -66,11 +19,24 @@
       "quantity": 3,
       "date": "2025-08-14",
       "price": 12,
+      "categoryId": 2,
       "category": {
         "id": 2,
         "name": "tiểu thuyết"
       },
       "id": 8
+    },
+    {
+      "code": "MS-0019",
+      "title": "máy tính",
+      "quantity": 12,
+      "date": "2025-08-14",
+      "price": 12,
+      "category": {
+        "id": 1,
+        "name": "truyện"
+      },
+      "id": 9
     }
   ],
   "categories": [

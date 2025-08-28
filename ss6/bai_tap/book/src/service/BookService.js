@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const API_URL = "http://localhost:3000/books"
+const API_URL = "http://localhost:3001/books"
 
 export const getAllBooksByCode= async (code) => {
     try {
@@ -104,6 +104,39 @@ export const getBooksSortedByPriceDesc = async () => {
 export const getTop5BooksByQuantity = async () => {
     try {
         const result = await axios.get(API_URL + `?_sort=quantity&_order=desc&_limit=3`);
+        return result.data;
+    } catch (error) {
+        return [];
+    }
+};
+
+/**
+ * Lấy danh sách sách theo nhiều điều kiện kết hợp (URL param style)
+ * @param {string} code       - mã sách
+ * @param {string} title      - tên sách
+ * @param {number} categoryId - id thể loại
+ * @param {string} startDate  - ngày bắt đầu (YYYY-MM-DD)
+ * @param {string} endDate    - ngày kết thúc (YYYY-MM-DD)
+ */
+export const searchBooks = async (code, title, categoryId, startDate, endDate) => {
+    try {
+        let query = "";
+
+        if (code) query += `&code_like=${code}`;
+        if (title) query += `&title_like=${title}`;
+        if (categoryId) query += `&categoryId=${categoryId}`;
+        if (startDate) query += `&date_gte=${startDate}`;
+        if (endDate) query += `&date_lte=${endDate}`;
+
+        // luôn sort theo quantity desc
+        query += `&_sort=quantity&_order=desc`;
+
+        // loại bỏ ký tự & đầu tiên, thay thành ?
+        if (query.startsWith("&")) {
+            query = "?" + query.slice(1);
+        }
+
+        const result = await axios.get(API_URL + query);
         return result.data;
     } catch (error) {
         return [];

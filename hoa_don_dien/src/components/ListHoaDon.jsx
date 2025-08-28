@@ -10,6 +10,25 @@ function ListHoaDon() {
     const [ten, setTen] = useState("");
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
+    const [filters, setFilters] = useState({
+        ten: "",
+        search: "",
+
+    });
+
+    // gọi API mỗi khi filters thay đổi
+    useEffect(() => {
+        const fetchBooks = async () => {
+            const result = await hoaDonService.searchBooksByFile(
+                filters.ten,
+                filters.search,
+            );
+            setHoaDon(result);
+        };
+
+        fetchBooks();
+    }, [filters]);
+
     useEffect(() => {
         const getAllHoaDon = async () => {
             const temp = await hoaDonService.getAllHoaDon();
@@ -73,7 +92,7 @@ function ListHoaDon() {
                         className="px-5 py-2.5 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 transition font-medium"
                         onClick={handleTop3}
                     >
-                        Top 5
+                        Top 3
                     </button>
                 </div>
 
@@ -84,8 +103,8 @@ function ListHoaDon() {
                     <input
                         type="text"
                         placeholder="🔍 Tìm theo mã..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        value={filters.search}
+                        onChange={(e) => setFilters({...filters, search: e.target.value})}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
 
@@ -93,8 +112,8 @@ function ListHoaDon() {
                     <input
                         type="text"
                         placeholder="🔍 Tìm theo tên..."
-                        value={ten}
-                        onChange={(e) => setTen(e.target.value)}
+                        value={filters.ten}
+                        onChange={(e) => setFilters({...filters, ten: e.target.value})}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     />
 
